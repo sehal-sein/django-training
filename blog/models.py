@@ -7,3 +7,8 @@ class Blog(models.Model):
     posted_by = models.TextField()
     posted_on = models.DateTimeField()
 
+class User(models.Model):
+    name = models.TextField()
+    description = models.TextField()
+    posted_by = models.TextField()
+    posted_on = models.DateTimeField()

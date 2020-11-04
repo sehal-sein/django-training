@@ -10,5 +10,4 @@ urlpatterns = [
     path('blog', views.insert_blog, name="insert_blog"),
     path('blog/<int:id>', views.update_blog, name="update_blog"),
     path('blog_delete/<int:id>', views.delete_blog, name="delete_blog"),
-
 ]
