@@ -56,6 +56,28 @@ def insert_blog(request):
     return JsonResponse(data)
 
 
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def update_blog(request,id):
+    data = json.loads(request.body.decode('utf-8'))
+
+    old_blog = Blog.objects.get(pk=id)
+
+    old_blog.description = data['description']
+    old_blog.name = data['name']
+    old_blog.save()
+    
+    return JsonResponse(data)
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def delete_blog(request,id):
+    old_blog = Blog.objects.get(pk=id)
+    old_blog.delete()
+    
+    return HttpResponse("Record Deleted")
+
 # CRUD
 # Create new model
 # Fetch list of data
