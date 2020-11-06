@@ -1,3 +1,4 @@
+from blog.model.blog_managment_model import BlogManagment
 from django.http import response
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
@@ -44,15 +45,7 @@ def insert_blog(request):
     # if data['name'] == None:
     #     print("Error")
 
-    new_blog = Blog(
-        name=data['name'],
-        description=data['description'],
-        posted_by=data['postedBy'],
-        posted_on=timezone.now()
-    )
-
-    new_blog.save()
-    
+    BlogManagment.get_list_of_profiles()
     return JsonResponse(data)
 
 
@@ -71,7 +64,7 @@ def update_blog(request,id):
     return JsonResponse(data)
 
 @csrf_exempt
-@require_http_methods(['POST'])
+@require_http_methods(['DELETE'])
 def delete_blog(request,id):
     old_blog = Blog.objects.get(pk=id)
     old_blog.delete()
